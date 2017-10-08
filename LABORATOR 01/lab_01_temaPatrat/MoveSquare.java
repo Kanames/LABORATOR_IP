@@ -103,16 +103,29 @@ public class MoveSquare {
 				Graphics g = canvas.getGraphics();
 				System.out.println("in afara for-ului...");
 				
+				
+				final int x_rand=rand.nextInt(width_var-50);
+				final int y_rand=rand.nextInt(height_var-50);
+				
 				for (int i=0; i < 100; i++) {
-					for (int j=0; j< 100; j++) {
-						canvas.paint(g);
-						g.fillRect(rand.nextInt(width_var) + i, rand.nextInt(height_var) + j, 25, 25);
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+					canvas.paint(g);
+					g.fillRect( x_rand+ i,  y_rand, 25, 25);
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+				for (int j=0; j< 100; j++) {
+					canvas.paint(g);
+					g.fillRect( x_rand+99,  y_rand+ j, 25, 25);
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 				}
 				
