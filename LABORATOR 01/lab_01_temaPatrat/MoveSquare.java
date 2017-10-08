@@ -99,35 +99,79 @@ public class MoveSquare {
 				
 				nr_clickVar++;
 				nr_clicks.setText(Integer.toString(nr_clickVar));
-				
 				Graphics g = canvas.getGraphics();
-				System.out.println("in afara for-ului...");
+				canvas.paint(g);
+				
+//				final int x_rand=rand.nextInt(width_var);
+//				final int y_rand=rand.nextInt(height_var);
+				final int x_rand=e.getX();
+				final int y_rand=e.getY();
 				
 				
-				final int x_rand=rand.nextInt(width_var-50);
-				final int y_rand=rand.nextInt(height_var-50);
+				int alegereDrum = rand.nextInt(4);
+				System.out.println("alegereDrum: "+alegereDrum);
 				
-				for (int i=0; i < 100; i++) {
-					canvas.paint(g);
-					g.fillRect( x_rand+ i,  y_rand, 25, 25);
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+				switch(alegereDrum) {
+				
+				case 0:
+					System.out.println("case 1 dreapta");
+					for (int drp=0; drp <= width_var-25-e.getX(); drp++) {
+						canvas.paint(g);
+						g.fillRect( x_rand+ drp,  y_rand, 25, 25);
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
+					break;
+				case 1:
+					System.out.println("case 2 jos");
+					for (int jos=0; jos <= height_var-25-e.getY(); jos++) {
+						canvas.paint(g);
+						g.fillRect( x_rand,  y_rand+ jos, 25, 25);
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					break;
+				case 2:
+					System.out.println("case 3 stanga ");
+					
+					for (int stg=0; stg <= width_var-25-e.getX(); stg++) {
+						canvas.paint(g);
+						g.fillRect( x_rand - stg,  y_rand, 25, 25);
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					break;
+				case 3:
+					System.out.println("case 4 sus");
+					for (int sus=0; sus <= width_var-25-e.getX(); sus++) {
+						canvas.paint(g);
+						g.fillRect( x_rand ,  y_rand- sus, 25, 25);
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					break;
 				}
 				
-				for (int j=0; j< 100; j++) {
-					canvas.paint(g);
-					g.fillRect( x_rand+99,  y_rand+ j, 25, 25);
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
+				
+				
+				
+				
 				
 				
 //				 g.clearRect(width_var+nr_clickVar,hright_var+nr_clickVar, 25, 25);
