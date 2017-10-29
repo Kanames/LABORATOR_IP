@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
@@ -17,6 +18,7 @@ import javax.swing.border.LineBorder;
 
 
 public class Tema3 extends JPanel{
+   public static int LIFE = 4;
    public static final int RECT_DIM = 50;
    public static final int WIN_DIM = 500;
    public static int my_x_pos=0;
@@ -24,7 +26,7 @@ public class Tema3 extends JPanel{
    public static int my_y_pos=0;
    public static int [][] map= {
                  {0,3,0,0,0,0,0,0,0,0,0,0,0},
-                 {0,1,0,1,1,1,0,1,1,1,0,0,0},
+                 {0,1,0,1,4,1,0,1,1,1,0,0,0},
                  {0,1,0,1,0,1,0,1,0,1,0,0,0},
                  {0,1,0,1,0,1,0,1,0,1,0,0,0},
                  {0,1,0,1,0,1,0,1,0,1,0,0,0},
@@ -72,6 +74,13 @@ public class Tema3 extends JPanel{
                         g.setColor(Color.GREEN); //START
                         g.fillRect(my_x_pos,my_y_pos, RECT_DIM, RECT_DIM);
                     }
+                    case 4:
+                    {
+                        my_x_pos=i*50; // pozitia la verde
+                        my_y_pos=j*50; // pozitia la verde
+                        g.setColor(Color.LIGHT_GRAY); //START
+                        g.fillRect(my_x_pos,my_y_pos, RECT_DIM, RECT_DIM);
+                    }
                 }
             }
         }
@@ -110,10 +119,17 @@ public class Tema3 extends JPanel{
                         x++;
                    }
                    System.out.println("x= "+x+" y= "+y+" map= "+map[x][y]);
-                   if(map[x][y]!=0){
-                       square.setLocation(x*50,y*50);
-                   } else {
-                       x--;
+                   if(map[x][y]==4){
+                		LIFE = LIFE-1;
+                        JOptionPane.showMessageDialog(frame,
+                        	    "You got "+LIFE+" life points");
+                        if(LIFE == 0) {
+                        	System.exit(0);
+                        }
+                   }else if(map[x][y]==1){
+                	   square.setLocation(x*50,y*50);
+                   }else {
+                	   x--;
                    }
                }
                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -121,10 +137,17 @@ public class Tema3 extends JPanel{
                         x--;
                    }
                    System.out.println("x= "+x+" y= "+y+" map= "+map[x][y]);
-                    if(map[x][y]!=0){
-                        square.setLocation(x*50,y*50);
-                    } else {
-                       x++;
+                   if(map[x][y]==4){
+                		LIFE = LIFE-1;
+                        JOptionPane.showMessageDialog(frame,
+                        		"You got "+LIFE+" life points");
+                        if(LIFE == 0) {
+                        	System.exit(0);
+                        }
+                   }else if(map[x][y]==1){
+                	   square.setLocation(x*50,y*50);
+                   }else {
+                	   x++;
                    }
                }
                if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -132,22 +155,36 @@ public class Tema3 extends JPanel{
                         y--;
                    }
                      System.out.println("x= "+x+" y= "+y+" map= "+map[x][y]);
-                    if(map[x][y]!=0){
-                        square.setLocation(x*50,y*50);
-                    } else {
-                       y++;
-                   }
+                     if(map[x][y]==4){
+                    		LIFE = LIFE-1;
+                            JOptionPane.showMessageDialog(frame,
+                            		"You got "+LIFE+" life points");
+                            if(LIFE == 0) {
+                            	System.exit(0);
+                            }
+                     }else if(map[x][y]==1){
+                  	   square.setLocation(x*50,y*50);
+                     }else {
+                  	   y++;
+                     }
                }
                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                     if(y<13){
                         y++;
                    }
                     System.out.println("x= "+x+" y= "+y+" map= "+map[x][y]);
-                    if(map[x][y]!=0){
-                        square.setLocation(x*50,y*50);
-                    } else {
-                       y--;
-                   }
+                    if(map[x][y]==4){
+                    	LIFE = LIFE-1;
+                        JOptionPane.showMessageDialog(frame,
+                        		"You got "+LIFE+" life points");
+                        if(LIFE == 0) {
+                        	System.exit(0);
+                        }
+                    }else if(map[x][y]==1){
+                 	   square.setLocation(x*50,y*50);
+                    }else {
+                 	   y--;
+                    }
                }
            }
 
