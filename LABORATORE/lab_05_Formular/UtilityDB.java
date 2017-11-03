@@ -92,5 +92,36 @@ public class UtilityDB {
 		st.executeUpdate();
 
 	}
+	
+	
+	public static Boolean insertPersoana(Persoana persObj) throws SQLException {
+		Boolean executat = false;
+		String nume = persObj.getNume();
+		String prenume = persObj.getPrenume();
+		String cnp = persObj.getCnp();
+		String query  = "INSERT INTO world.ugal_persoane(PERS_NUME,PERS_PRENUME,PERS_CNP) VALUES(?,?,?);";
+		PreparedStatement st = null;
+		Connection con = null;
+		try {
+			 System.out.println("in try catch body");
+			 con = loadDriver();
+			 st = (PreparedStatement) con.prepareStatement(query);
+			 st.setString(1, nume);
+			 st.setString(2, prenume);
+			 st.setString(3, cnp);
+			 executat = st.execute();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (st != null) {
+				st.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+
+		return executat;
+	}
 
 }
