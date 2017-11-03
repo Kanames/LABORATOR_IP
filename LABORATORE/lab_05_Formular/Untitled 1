@@ -1,0 +1,4 @@
+O interfata contine un formular cu urmatoarele campuri de intrare: Nume, Varsta, CNP, si un buton OK. 
+ Daca se introduc date valide in toate campurile si este apasat OK, 
+ se creeaza o inregistrare noua intr-o tabela "Persoane" a unei baze de date MySQL.
+Folositi JDBC (Java DataBase Connectivity).
