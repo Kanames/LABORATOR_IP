@@ -63,11 +63,12 @@ public class GridBagLayoutTutorial {
 		register.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				boolean insertMADE = false;
 				try {
 					Persoana pers = new Persoana();
-					String tmp_nume = nume.getText();
-					String tmp_prenume   = prenume.getText();
-					String tmp_cnp   = cnp.getText();
+					String tmp_nume = nume.getText().trim();
+					String tmp_prenume   = prenume.getText().trim();
+					String tmp_cnp   = cnp.getText().trim();
 					
 					if(tmp_nume.length() < 1 || tmp_prenume.length() < 1 ){
 						throw new Exception("Trebuie completate toate cele 3 input-uri");
@@ -75,12 +76,15 @@ public class GridBagLayoutTutorial {
 					if(tmp_cnp.length() != 13 ){
 						throw new Exception("CNP-ul are 13 caractere");
 					}
+					if(tmp_nume.matches(".*\\d+.*") || tmp_prenume.matches(".*\\d+.*")) {
+						throw new Exception("Nume si prenume nu trebuie sa contine cifre");
+					}
 
 					pers.setNume(tmp_nume);
 					pers.setPrenume(tmp_prenume);
 					pers.setCnp(tmp_cnp);
 					
-					UtilityDB.insertPersoana(pers);
+					 insertMADE = UtilityDB.insertPersoana(pers);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
@@ -90,6 +94,13 @@ public class GridBagLayoutTutorial {
 					System.out.println(e2.getMessage());
 					labERR.setForeground(Color.red);
 					labERR.setText(e2.getMessage());
+				}
+				
+				System.out.println(insertMADE);
+				if(insertMADE){
+					labERR.setForeground(Color.GREEN);
+					labERR.setText("Inserat cu succes ... ");
+					panel.add(labERR, gbc);
 				}
 
 			}

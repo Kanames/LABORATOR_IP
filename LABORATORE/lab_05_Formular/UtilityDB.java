@@ -110,6 +110,7 @@ public class UtilityDB {
 			 st.setString(2, prenume);
 			 st.setString(3, cnp);
 			 executat = st.execute();
+			 executat= true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
