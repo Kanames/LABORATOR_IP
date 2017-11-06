@@ -99,7 +99,8 @@ public class UtilityDB {
 		String nume = persObj.getNume();
 		String prenume = persObj.getPrenume();
 		String cnp = persObj.getCnp();
-		String query  = "INSERT INTO world.ugal_persoane(PERS_NUME,PERS_PRENUME,PERS_CNP) VALUES(?,?,?);";
+		String varsta = persObj.getVarsta();
+		String query  = "INSERT INTO world.ugal_persoane(PERS_NUME,PERS_PRENUME,PERS_CNP,PERS_VARSTA) VALUES(?,?,?,?);";
 		PreparedStatement st = null;
 		Connection con = null;
 		try {
@@ -109,6 +110,7 @@ public class UtilityDB {
 			 st.setString(1, nume);
 			 st.setString(2, prenume);
 			 st.setString(3, cnp);
+			 st.setString(4, varsta);
 			 executat = st.execute();
 			 executat= true;
 		} catch (SQLException e) {

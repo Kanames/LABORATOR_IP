@@ -21,11 +21,13 @@ public class GridBagLayoutTutorial {
 	JPanel panel = new JPanel();
 	JLabel labNume = new JLabel("Nume: ");
 	JLabel labPrenume = new JLabel("Prenume: ");
+	JLabel labVarsta = new JLabel("Varsta: ");
 	JLabel labCnp = new JLabel("CNP: ");
 	JLabel labERR = new JLabel();
 	JTextField nume   = new JTextField(15);
 	JTextField prenume   = new JTextField(15);
 	JTextField cnp   = new JTextField(15);
+	JTextField varsta   = new JTextField(15);
 	JButton register = new JButton("Register");
 
 	public GridBagLayoutTutorial() {
@@ -55,9 +57,16 @@ public class GridBagLayoutTutorial {
 		gbc.gridy = 2; // rand 2
 		panel.add(cnp, gbc);
 		
+		gbc.gridx = 0; // coloana 1
+		gbc.gridy = 3; // rand 2
+		panel.add(labVarsta, gbc);
+		gbc.gridx = 1; // coloana 2
+		gbc.gridy = 3; // rand 2
+		panel.add(varsta, gbc);
+		
 		gbc.gridwidth = 2;  //CATE COLOANA VREAU SA IAU 
 		gbc.gridx = 0; // coloana 1
-		gbc.gridy = 3; // rand 3
+		gbc.gridy = 4; // rand 3
 		panel.add(register, gbc);
 		
 		register.addActionListener(new ActionListener() {
@@ -69,6 +78,7 @@ public class GridBagLayoutTutorial {
 					String tmp_nume = nume.getText().trim();
 					String tmp_prenume   = prenume.getText().trim();
 					String tmp_cnp   = cnp.getText().trim();
+					String tmp_varsta   = varsta.getText().trim();
 					
 					if(tmp_nume.length() < 1 || tmp_prenume.length() < 1 ){
 						throw new Exception("Trebuie completate toate cele 3 input-uri");
@@ -79,10 +89,12 @@ public class GridBagLayoutTutorial {
 					if(tmp_nume.matches(".*\\d+.*") || tmp_prenume.matches(".*\\d+.*")) {
 						throw new Exception("Nume si prenume nu trebuie sa contine cifre");
 					}
+				
 
 					pers.setNume(tmp_nume);
 					pers.setPrenume(tmp_prenume);
 					pers.setCnp(tmp_cnp);
+					pers.setCnp(tmp_varsta);
 					
 					 insertMADE = UtilityDB.insertPersoana(pers);
 				} catch (SQLException e1) {

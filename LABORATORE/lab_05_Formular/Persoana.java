@@ -4,6 +4,7 @@ public class Persoana {
 private String nume;
 private String prenume;
 private String cnp;
+private String varsta;
 public String getNume() {
 	return nume;
 }
@@ -21,6 +22,12 @@ public String getCnp() {
 }
 public void setCnp(String cnp) {
 	this.cnp = cnp;
+}
+public String getVarsta() {
+	return varsta;
+}
+public void setVarsta(String varsta) {
+	this.varsta = varsta;
 }
 
 }
