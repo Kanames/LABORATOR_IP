@@ -5,6 +5,7 @@ private String nume;
 private String prenume;
 private String cnp;
 private String varsta;
+
 public String getNume() {
 	return nume;
 }

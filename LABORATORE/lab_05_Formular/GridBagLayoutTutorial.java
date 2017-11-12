@@ -94,7 +94,7 @@ public class GridBagLayoutTutorial {
 					pers.setNume(tmp_nume);
 					pers.setPrenume(tmp_prenume);
 					pers.setCnp(tmp_cnp);
-					pers.setCnp(tmp_varsta);
+					pers.setVarsta(tmp_varsta);
 					
 					 insertMADE = UtilityDB.insertPersoana(pers);
 				} catch (SQLException e1) {
