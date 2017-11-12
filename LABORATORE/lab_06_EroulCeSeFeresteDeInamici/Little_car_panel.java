@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Little_car_panel extends JPanel implements KeyListener {
-
+	
+	private int time10 = 0;
     private Car car1 = new Car();
     private Timer timer1 = new Timer(1000, new TimerListener());
     private ArrayList<Obstacle> list1 = new ArrayList<Obstacle>();
@@ -76,14 +77,17 @@ public class Little_car_panel extends JPanel implements KeyListener {
 
     public class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            Integer x = rand1.nextInt(420);
-            list1.add(new Obstacle(x));
+            if(time10 == 10) {
+            	Integer x = rand1.nextInt(420);
+            	list1.add(new Obstacle(x));
+            	time10 = 0;
+            }else{
+        		time10++;
+        	}
             for (Obstacle obstacle : list1) {
-                obstacle.move_down();
-                check_collision();
-            }
+            	obstacle.move_down();
+            	check_collision();
+        	}
         }
-
     }
-
 }
